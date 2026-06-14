@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 const links = [
   { href: "/", label: "Home" },
@@ -13,6 +14,7 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const { user, logout, dashboardPath } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-emerald-100 bg-white/95 backdrop-blur-md">
@@ -44,12 +46,31 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link
-            href="/products"
-            className="ml-3 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
-          >
-            Browse Products
-          </Link>
+
+          {user ? (
+            <div className="ml-3 flex items-center gap-2">
+              <Link
+                href={dashboardPath}
+                className="rounded-xl border border-emerald-200 px-4 py-2.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
+              >
+                Dashboard
+              </Link>
+              <button
+                type="button"
+                onClick={logout}
+                className="rounded-xl px-3 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="ml-3 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
 
         <button
@@ -83,13 +104,32 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/products"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-xl bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white"
-            >
-              Browse Products
-            </Link>
+            {user ? (
+              <>
+                <Link
+                  href={dashboardPath}
+                  onClick={() => setOpen(false)}
+                  className="mt-2 rounded-xl border border-emerald-200 px-4 py-3 text-center text-sm font-semibold text-emerald-700"
+                >
+                  Dashboard ({user.role})
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => { logout(); setOpen(false); }}
+                  className="rounded-xl px-4 py-3 text-center text-sm text-gray-500"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setOpen(false)}
+                className="mt-2 rounded-xl bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
         </div>
       )}

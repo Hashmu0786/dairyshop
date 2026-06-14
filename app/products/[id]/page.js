@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ContactSupplierButton from "@/components/ContactSupplierButton";
+import ProductActions from "@/components/ProductActions";
 import ProductCard from "@/components/ProductCard";
 import { getProductById, getProductsBySupplier } from "@/data/products";
 import { getSupplierById } from "@/data/suppliers";
@@ -110,11 +110,7 @@ export default async function ProductDetailPage({ params }) {
                 </div>
               </div>
               <div className="mt-4">
-                <ContactSupplierButton
-                  supplierName={supplier.name}
-                  productName={product.name}
-                  className="w-full rounded-xl bg-emerald-600 py-3.5 font-semibold text-white transition hover:bg-emerald-700 sm:w-auto sm:px-8"
-                />
+                <ProductActions product={product} supplier={supplier} />
               </div>
             </div>
           )}

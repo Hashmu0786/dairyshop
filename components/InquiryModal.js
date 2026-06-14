@@ -1,8 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { useData } from "@/context/DataContext";
 
-export default function InquiryModal({ isOpen, onClose, supplierName, productName }) {
+export default function InquiryModal({
+  isOpen,
+  onClose,
+  supplierName,
+  productName,
+  supplierId,
+  productId,
+}) {
+  const { user } = useAuth();
+  const { addInquiry } = useData();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -12,6 +23,19 @@ export default function InquiryModal({ isOpen, onClose, supplierName, productNam
     quantity: "",
     message: "",
   });
+
+  useEffect(() => {
+    if (isOpen && user) {
+      setForm({
+        name: user.name ?? "",
+        company: user.company ?? "",
+        email: user.email ?? "",
+        phone: user.phone ?? "",
+        quantity: "",
+        message: "",
+      });
+    }
+  }, [isOpen, user]);
 
   useEffect(() => {
     if (isOpen) {
@@ -33,6 +57,13 @@ export default function InquiryModal({ isOpen, onClose, supplierName, productNam
 
   function handleSubmit(e) {
     e.preventDefault();
+    addInquiry({
+      buyerId: user?.id ?? null,
+      supplierId,
+      productId: productId ?? null,
+      subject: productName ? `Inquiry: ${productName}` : `Contact ${supplierName}`,
+      ...form,
+    });
     setSubmitted(true);
   }
 
@@ -72,18 +103,29 @@ export default function InquiryModal({ isOpen, onClose, supplierName, productNam
             </div>
             <h3 className="mt-4 text-xl font-bold text-gray-900">Inquiry Sent!</h3>
             <p className="mt-2 text-gray-600">
-              Your message has been sent to <strong>{supplierName}</strong>. They typically respond within 24 hours.
+              Your message has been sent to <strong>{supplierName}</strong>. Track it in your dashboard.
             </p>
+            {user?.role === "buyer" && (
+              <a href="/buyer/inquiries" className="mt-4 inline-block text-sm font-semibold text-emerald-600 hover:text-emerald-700">
+                View My Inquiries →
+              </a>
+            )}
             <button
               type="button"
               onClick={handleClose}
-              className="mt-6 rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-700"
+              className="mt-6 block w-full rounded-xl bg-emerald-600 px-6 py-3 font-semibold text-white hover:bg-emerald-700"
             >
               Done
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 px-6 py-5">
+            {!user && (
+              <div className="rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                <a href="/login" className="font-semibold underline">Sign in</a> to auto-fill your details and track inquiries.
+              </div>
+            )}
+
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-gray-700">Your Name *</label>

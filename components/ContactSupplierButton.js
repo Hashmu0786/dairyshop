@@ -3,7 +3,13 @@
 import { useState } from "react";
 import InquiryModal from "./InquiryModal";
 
-export default function ContactSupplierButton({ supplierName, productName, className = "" }) {
+export default function ContactSupplierButton({
+  supplierName,
+  productName,
+  supplierId,
+  productId,
+  className = "",
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -20,6 +26,8 @@ export default function ContactSupplierButton({ supplierName, productName, class
         onClose={() => setOpen(false)}
         supplierName={supplierName}
         productName={productName}
+        supplierId={supplierId}
+        productId={productId}
       />
     </>
   );

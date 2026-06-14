@@ -1,0 +1,131 @@
+export const orders = [
+  {
+    id: "ord-001",
+    orderNumber: "DC-2026-0142",
+    buyerId: "usr-buyer-1",
+    supplierId: "sup-001",
+    items: [
+      { productId: "prod-001", name: "Toned Fresh Milk", quantity: 100, unit: "litres", price: 52 },
+      { productId: "prod-002", name: "Full Cream Gold Milk", quantity: 50, unit: "litres", price: 68 },
+    ],
+    subtotal: 8600,
+    gst: 1548,
+    total: 10148,
+    status: "delivered",
+    paymentStatus: "paid",
+    paymentMethod: "Net 15 days",
+    deliveryAddress: "Plot 42, MIDC Andheri East, Mumbai 400093",
+    notes: "Daily delivery slot: 6–8 AM",
+    createdAt: "2026-05-28T06:30:00",
+    updatedAt: "2026-06-02T08:00:00",
+    deliveredAt: "2026-06-02T08:00:00",
+  },
+  {
+    id: "ord-002",
+    orderNumber: "DC-2026-0156",
+    buyerId: "usr-buyer-2",
+    supplierId: "sup-002",
+    items: [
+      { productId: "prod-003", name: "A2 Desi Cow Milk", quantity: 40, unit: "litres", price: 95 },
+      { productId: "prod-007", name: "Farm Fresh Paneer", quantity: 25, unit: "kg", price: 320 },
+    ],
+    subtotal: 11800,
+    gst: 2124,
+    total: 13924,
+    status: "shipped",
+    paymentStatus: "paid",
+    paymentMethod: "COD",
+    deliveryAddress: "12, Koramangala 5th Block, Bengaluru 560095",
+    notes: "Contact Priya on arrival",
+    createdAt: "2026-06-08T10:15:00",
+    updatedAt: "2026-06-12T14:30:00",
+    deliveredAt: null,
+  },
+  {
+    id: "ord-003",
+    orderNumber: "DC-2026-0163",
+    buyerId: "usr-buyer-3",
+    supplierId: "sup-001",
+    items: [{ productId: "prod-001", name: "Toned Fresh Milk", quantity: 200, unit: "litres", price: 52 }],
+    subtotal: 10400,
+    gst: 1872,
+    total: 12272,
+    status: "processing",
+    paymentStatus: "pending",
+    paymentMethod: "Net 15 days",
+    deliveryAddress: "Hotel Grand Palace, CG Road, Ahmedabad 380009",
+    notes: "Bulk order for banquet event on June 20",
+    createdAt: "2026-06-10T09:00:00",
+    updatedAt: "2026-06-11T11:00:00",
+    deliveredAt: null,
+  },
+  {
+    id: "ord-004",
+    orderNumber: "DC-2026-0168",
+    buyerId: "usr-buyer-1",
+    supplierId: "sup-003",
+    items: [{ productId: "prod-013", name: "Bilona A2 Ghee", quantity: 20, unit: "kg", price: 1850 }],
+    subtotal: 37000,
+    gst: 6660,
+    total: 43660,
+    status: "confirmed",
+    paymentStatus: "pending",
+    paymentMethod: "Advance 50%",
+    deliveryAddress: "Fresh Foods Warehouse, Bhiwandi, Maharashtra",
+    notes: "Gift packaging required",
+    createdAt: "2026-06-11T16:45:00",
+    updatedAt: "2026-06-12T09:30:00",
+    deliveredAt: null,
+  },
+  {
+    id: "ord-005",
+    orderNumber: "DC-2026-0171",
+    buyerId: "usr-buyer-2",
+    supplierId: "sup-001",
+    items: [{ productId: "prod-005", name: "Set Curd (Dahi)", quantity: 30, unit: "kg", price: 85 }],
+    subtotal: 2550,
+    gst: 459,
+    total: 3009,
+    status: "pending",
+    paymentStatus: "pending",
+    paymentMethod: "Net 7 days",
+    deliveryAddress: "SpiceRoute Kitchen, HSR Layout, Bengaluru",
+    notes: "",
+    createdAt: "2026-06-13T08:20:00",
+    updatedAt: "2026-06-13T08:20:00",
+    deliveredAt: null,
+  },
+  {
+    id: "ord-006",
+    orderNumber: "DC-2026-0175",
+    buyerId: "usr-buyer-3",
+    supplierId: "sup-002",
+    items: [{ productId: "prod-008", name: "Malai Paneer Cubes", quantity: 15, unit: "kg", price: 340 }],
+    subtotal: 5100,
+    gst: 918,
+    total: 6018,
+    status: "cancelled",
+    paymentStatus: "refunded",
+    paymentMethod: "COD",
+    deliveryAddress: "Hotel Grand Palace, Ahmedabad",
+    notes: "Cancelled — event postponed",
+    createdAt: "2026-06-05T14:00:00",
+    updatedAt: "2026-06-06T10:00:00",
+    deliveredAt: null,
+  },
+];
+
+export const ORDER_STATUSES = ["pending", "confirmed", "processing", "shipped", "delivered", "cancelled"];
+export const PAYMENT_STATUSES = ["pending", "paid", "refunded"];
+
+export function getOrderById(id) {
+  return orders.find((o) => o.id === id) ?? null;
+}
+
+export function getOrdersByBuyer(buyerId) {
+  return orders.filter((o) => o.buyerId === buyerId);
+}
+
+export function getOrdersBySupplier(supplierId) {
+  return orders.filter((o) => o.supplierId === supplierId);
+}

@@ -30,7 +30,8 @@ export default function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-emerald-100/80">
               <li><Link href="/suppliers" className="hover:text-white">Find Suppliers</Link></li>
               <li><Link href="/suppliers" className="hover:text-white">Verified Partners</Link></li>
-              <li><span className="text-emerald-400">List Your Dairy (Coming Soon)</span></li>
+              <li><Link href="/login" className="hover:text-white">Seller Login</Link></li>
+              <li><Link href="/login" className="hover:text-white">Buyer Login</Link></li>
             </ul>
           </div>
 
