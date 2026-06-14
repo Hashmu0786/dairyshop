@@ -118,6 +118,13 @@ export default function LoginPage() {
             </button>
           </form>
 
+          <p className="mt-6 text-center text-sm text-gray-600">
+            Don't have an account?{" "}
+            <Link href="/signup" className="font-semibold text-emerald-600 hover:text-emerald-700">
+              Sign up now
+            </Link>
+          </p>
+
           <div className="mt-8 rounded-2xl border border-emerald-100 bg-emerald-50/50 p-5">
             <p className="text-sm font-semibold text-emerald-900">Demo accounts — click to fill</p>
             <div className="mt-3 space-y-2">

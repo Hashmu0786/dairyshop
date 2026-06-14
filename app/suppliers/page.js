@@ -1,18 +1,35 @@
-import SupplierCard from "@/components/SupplierCard";
-import { suppliers } from "@/data/suppliers";
+"use client";
 
-export const metadata = {
-  title: "Suppliers | DairyConnect",
-  description: "Find verified dairy suppliers across India — cooperatives, farms, and artisan producers.",
-};
+import { useEffect, useState } from "react";
+import SupplierCard from "@/components/SupplierCard";
+import { getAllSuppliers } from "@/data/suppliers";
 
 export default function SuppliersPage() {
+  const [supplierList, setSupplierList] = useState([]);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setSupplierList(getAllSuppliers());
+    setHydrated(true);
+  }, []);
+
+  if (!hydrated) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Dairy Suppliers</h1>
+          <p className="mt-2 text-gray-600">Loading suppliers...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Dairy Suppliers</h1>
         <p className="mt-2 text-gray-600">
-          Connect with {suppliers.length} verified suppliers from across India
+          Connect with {supplierList.length} verified suppliers from across India
         </p>
       </div>
 
@@ -24,7 +41,7 @@ export default function SuppliersPage() {
       </div>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {suppliers.map((supplier) => (
+        {supplierList.map((supplier) => (
           <SupplierCard key={supplier.id} supplier={supplier} />
         ))}
       </div>

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const STANDALONE_PREFIXES = ["/login", "/admin", "/buyer", "/seller"];
+const STANDALONE_PREFIXES = ["/login", "/signup", "/admin", "/buyer", "/seller"];
 
 export default function SiteChrome({ children }) {
   const pathname = usePathname();

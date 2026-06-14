@@ -1,28 +1,45 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useParams, notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 import ContactSupplierButton from "@/components/ContactSupplierButton";
 import ProductCard from "@/components/ProductCard";
-import { getProductsBySupplier } from "@/data/products";
 import { getSupplierById } from "@/data/suppliers";
+import { useData } from "@/context/DataContext";
 import { enrichProducts } from "@/lib/utils";
 
-export async function generateMetadata({ params }) {
-  const { id } = await params;
-  const supplier = getSupplierById(id);
-  if (!supplier) return { title: "Supplier Not Found | DairyConnect" };
-  return {
-    title: `${supplier.name} | DairyConnect`,
-    description: supplier.description,
-  };
-}
+export default function SupplierProfilePage() {
+  const params = useParams();
+  const id = params?.id;
+  const { products, hydrated } = useData();
+  const [supplier, setSupplier] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-export default async function SupplierProfilePage({ params }) {
-  const { id } = await params;
-  const supplier = getSupplierById(id);
-  if (!supplier) notFound();
+  useEffect(() => {
+    if (id) {
+      const found = getSupplierById(id);
+      setSupplier(found);
+      setLoading(false);
+    }
+  }, [id, hydrated]);
 
-  const supplierProducts = enrichProducts(getProductsBySupplier(supplier.id));
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-emerald-200 border-t-emerald-600" />
+      </div>
+    );
+  }
+
+  if (!supplier) {
+    notFound();
+  }
+
+  const supplierProducts = enrichProducts(
+    products.filter((p) => p.supplierId === supplier.id)
+  );
 
   return (
     <div>
@@ -125,7 +142,7 @@ export default async function SupplierProfilePage({ params }) {
                 </div>
                 <div>
                   <dt className="text-gray-500">Website</dt>
-                  <dd className="font-medium text-gray-900">{supplier.contact.website}</dd>
+                  <dd className="font-medium text-gray-900">{supplier.contact.website || "—"}</dd>
                 </div>
               </dl>
             </section>

@@ -64,12 +64,20 @@ export default function Navbar() {
               </button>
             </div>
           ) : (
-            <Link
-              href="/login"
-              className="ml-3 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
-            >
-              Sign In
-            </Link>
+            <div className="ml-3 flex items-center gap-2">
+              <Link
+                href="/login"
+                className="rounded-xl px-4 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 hover:text-emerald-700"
+              >
+                Sign In
+              </Link>
+              <Link
+                href="/signup"
+                className="rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700"
+              >
+                Sign Up
+              </Link>
+            </div>
           )}
         </div>
 
@@ -122,13 +130,22 @@ export default function Navbar() {
                 </button>
               </>
             ) : (
-              <Link
-                href="/login"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-xl bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white"
-              >
-                Sign In
-              </Link>
+              <div className="mt-2 flex flex-col gap-2">
+                <Link
+                  href="/login"
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl border border-emerald-100 px-4 py-3 text-center text-sm font-semibold text-emerald-700 hover:bg-emerald-50"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-700"
+                >
+                  Sign Up
+                </Link>
+              </div>
             )}
           </div>
         </div>

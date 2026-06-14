@@ -1,3 +1,5 @@
+import { getStorageItem, STORAGE_KEYS } from "@/lib/store";
+
 export const suppliers = [
   {
     id: "sup-001",
@@ -307,14 +309,21 @@ export const suppliers = [
   },
 ];
 
+export function getAllSuppliers() {
+  return getStorageItem(STORAGE_KEYS.suppliers, suppliers);
+}
+
 export function getSupplierById(id) {
-  return suppliers.find((s) => s.id === id);
+  const stored = getAllSuppliers();
+  return stored.find((s) => s.id === id);
 }
 
 export function getSupplierBySlug(slug) {
-  return suppliers.find((s) => s.slug === slug);
+  const stored = getAllSuppliers();
+  return stored.find((s) => s.slug === slug);
 }
 
 export function getTopSuppliers(limit = 4) {
-  return [...suppliers].sort((a, b) => b.rating - a.rating).slice(0, limit);
+  const stored = getAllSuppliers();
+  return [...stored].sort((a, b) => b.rating - a.rating).slice(0, limit);
 }
