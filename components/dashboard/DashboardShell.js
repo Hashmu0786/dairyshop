@@ -71,7 +71,7 @@ export default function DashboardShell({ role, children }) {
           <Link href="/" className="flex items-center gap-2.5" onClick={() => setSidebarOpen(false)}>
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-lg">🐄</span>
             <div>
-              <span className="block text-sm font-bold">DairyConnect</span>
+              <span className="block text-sm font-bold">DairyShop</span>
               <span className="text-xs text-emerald-300">{config.subtitle}</span>
             </div>
           </Link>

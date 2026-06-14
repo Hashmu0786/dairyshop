@@ -130,7 +130,7 @@ export default function HomePage() {
                 Ready to source quality dairy for your business?
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-emerald-100">
-                Join hundreds of restaurants and retailers who trust DairyConnect for their daily dairy needs.
+                Join hundreds of restaurants and retailers who trust DairyShop for their daily dairy needs.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-4">
                 <Link

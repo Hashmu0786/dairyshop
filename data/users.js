@@ -1,13 +1,13 @@
 export const users = [
   {
     id: "usr-admin",
-    email: "admin@dairyconnect.in",
+    email: "admin@dairyshop.in",
     password: "admin123",
     role: "admin",
     name: "Ananya Sharma",
     phone: "+91 98765 00001",
     avatar: null,
-    company: "DairyConnect Platform",
+    company: "DairyShop Platform",
     designation: "Platform Administrator",
     city: "Bengaluru",
     state: "Karnataka",
@@ -129,7 +129,7 @@ export function getUsersByRole(role) {
 }
 
 export const demoCredentials = [
-  { role: "Admin", email: "admin@dairyconnect.in", password: "admin123" },
+  { role: "Admin", email: "admin@dairyshop.in", password: "admin123" },
   { role: "Buyer", email: "rahul@freshfoods.in", password: "buyer123" },
   { role: "Seller", email: "b2b@amulvalleydairy.in", password: "seller123" },
 ];

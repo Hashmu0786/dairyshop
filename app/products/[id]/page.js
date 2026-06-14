@@ -11,9 +11,9 @@ import { getCategoryName } from "@/data/categories";
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const product = getProductById(id);
-  if (!product) return { title: "Product Not Found | DairyConnect" };
+  if (!product) return { title: "Product Not Found | DairyShop" };
   return {
-    title: `${product.name} | DairyConnect`,
+    title: `${product.name} | DairyShop`,
     description: product.description,
   };
 }

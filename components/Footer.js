@@ -8,7 +8,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-600 text-sm">🐄</span>
-              <span className="text-lg font-bold">DairyConnect</span>
+              <span className="text-lg font-bold">DairyShop</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-emerald-200/80">
               India&apos;s trusted B2B dairy marketplace connecting buyers with verified suppliers across the country.
@@ -38,7 +38,7 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-emerald-300">Contact</h3>
             <ul className="mt-4 space-y-2.5 text-sm text-emerald-100/80">
-              <li>support@dairyconnect.in</li>
+              <li>support@dairyshop.in</li>
               <li>+91 1800-DAIRY-01</li>
               <li>Bengaluru, Karnataka, India</li>
             </ul>
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-emerald-800 pt-8 sm:flex-row">
-          <p className="text-sm text-emerald-300/70">© 2026 DairyConnect. All rights reserved.</p>
+          <p className="text-sm text-emerald-300/70">© 2026 DairyShop. All rights reserved.</p>
           <p className="text-xs text-emerald-400/60">FSSAI Licensed Platform · Demo Project</p>
         </div>
       </div>

@@ -52,7 +52,7 @@ export default function LoginPage() {
       <div className="hidden w-1/2 flex-col justify-between bg-gradient-to-br from-emerald-800 via-emerald-700 to-teal-700 p-12 text-white lg:flex">
         <Link href="/" className="flex items-center gap-3">
           <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-xl">🐄</span>
-          <span className="text-xl font-bold">DairyConnect</span>
+          <span className="text-xl font-bold">DairyShop</span>
         </Link>
         <div>
           <h1 className="text-4xl font-bold leading-tight">Manage your dairy business in one place</h1>
@@ -66,7 +66,7 @@ export default function LoginPage() {
             <li className="flex items-center gap-2"><span className="text-emerald-300">✓</span> Multi-role access control</li>
           </ul>
         </div>
-        <p className="text-sm text-emerald-200/70">© 2026 DairyConnect · Demo Platform</p>
+        <p className="text-sm text-emerald-200/70">© 2026 DairyShop · Demo Platform</p>
       </div>
 
       <div className="flex w-full flex-col justify-center px-6 py-12 lg:w-1/2 lg:px-16">

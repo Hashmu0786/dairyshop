@@ -6,7 +6,7 @@ import { filterProducts } from "@/data/products";
 import { enrichProducts } from "@/lib/utils";
 
 export const metadata = {
-  title: "Products | DairyConnect",
+  title: "Products | DairyShop",
   description: "Browse dairy products — milk, curd, paneer, butter, ghee, and cheese from verified suppliers.",
 };
 

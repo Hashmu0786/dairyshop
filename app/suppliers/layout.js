@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Suppliers | DairyConnect",
+  title: "Suppliers | DairyShop",
   description: "Find verified dairy suppliers across India — cooperatives, farms, and artisan producers.",
 };
 

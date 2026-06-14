@@ -1,7 +1,7 @@
 import ProtectedLayout from "@/components/dashboard/ProtectedLayout";
 
 export const metadata = {
-  title: "Buyer Portal | DairyConnect",
+  title: "Buyer Portal | DairyShop",
 };
 
 export default function BuyerLayout({ children }) {

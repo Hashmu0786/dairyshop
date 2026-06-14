@@ -24,7 +24,7 @@ export default function Navbar() {
             🐄
           </span>
           <div>
-            <span className="text-lg font-bold tracking-tight text-emerald-900">DairyConnect</span>
+            <span className="text-lg font-bold tracking-tight text-emerald-900">DairyShop</span>
             <span className="hidden text-xs text-emerald-600 sm:block">B2B Dairy Marketplace</span>
           </div>
         </Link>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "DairyConnect — B2B Dairy Marketplace",
+  title: "DairyShop — B2B Dairy Marketplace",
   description:
     "India's B2B dairy marketplace. Connect with verified suppliers for milk, paneer, ghee, butter, cheese, and more.",
 };
